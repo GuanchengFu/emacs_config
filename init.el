@@ -34,7 +34,7 @@
    ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
  '(blink-cursor-mode nil)
  '(custom-enabled-themes '(deeper-blue))
- '(package-selected-packages '(magit company)))
+ '(package-selected-packages '(projectile magit company)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -58,8 +58,19 @@
                          ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 
+;;使用下面的配置文件将删除功能配置成与其他图形界面的编辑器相同，即当你选中一段文字 之后输入一个字符会替换掉你选中部分的文字。
+(delete-selection-mode 1)
 
+;; Add features to load recent files
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-item 10)
 
+;; projectile configuration
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+;; using alien as the index method.
+(setq projectile-indexing-method 'alien)
 
 ;; Installed packages:
-;; magit  company
+;; magit  company  projectile
