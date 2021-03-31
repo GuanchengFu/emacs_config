@@ -2,9 +2,10 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
+(show-paren-mode 1)
+
 ;; Display the number of lines.
 (global-linum-mode 1)
-
 (setq-default cursor-type 'box)
 
 ;; 关闭启动帮助画面
@@ -33,7 +34,7 @@
    ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
  '(blink-cursor-mode nil)
  '(custom-enabled-themes '(deeper-blue))
- '(package-selected-packages '(company)))
+ '(package-selected-packages '(magit company)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -44,5 +45,21 @@
 ;; Do not generate the back up files
 (setq make-backup-files nil)
 
-
+;; Open company for global use
 (global-company-mode 1)
+
+;; Use http proxy for emacs
+(setq url-proxy-services '(("http" . "127.0.0.1:41091")
+			   ("https" . "127.0.0.1:41091")))
+
+;; Use the melpa repo
+(require 'package)
+(setq package-archives '(("gnu"   . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
+(package-initialize)
+
+
+
+
+;; Installed packages:
+;; magit  company
